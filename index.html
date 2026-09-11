@@ -1,0 +1,1341 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Memories Diary</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* =========================
+           BASIC RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Playfair Display", serif;
+            background:
+                radial-gradient(circle at top left, rgba(255,255,255,0.75), transparent 35%),
+                radial-gradient(circle at bottom right, rgba(255,190,220,0.45), transparent 35%),
+                linear-gradient(135deg, #ffeaf3, #ffdce9, #fff0f6);
+            color: white;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           FLOATING BACKGROUND
+        ========================= */
+
+        .background-elements {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .float-item {
+            position: absolute;
+            bottom: -80px;
+            font-size: 25px;
+            opacity: 0.55;
+            animation: floatUp linear infinite;
+        }
+
+        @keyframes floatUp {
+
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: translateY(-50vh) translateX(25px) rotate(180deg);
+            }
+
+            100% {
+                transform: translateY(-115vh) translateX(-30px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
+
+        .page {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            padding: 45px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            text-align: center;
+        }
+
+
+        /* =========================
+           TITLE
+        ========================= */
+
+        .main-title {
+            font-family: "Cinzel", serif;
+            font-size: clamp(38px, 7vw, 78px);
+            font-weight: 800;
+            letter-spacing: 4px;
+            margin-bottom: 35px;
+
+            background: linear-gradient(
+                to bottom,
+                #fff6b7 0%,
+                #ffd76a 25%,
+                #d99a1e 50%,
+                #fff1a8 70%,
+                #b87500 100%
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+
+            text-shadow:
+                0 0 8px rgba(255, 210, 80, 0.65),
+                0 0 18px rgba(255, 190, 40, 0.35);
+        }
+
+        .subtitle {
+            margin-top: -20px;
+            margin-bottom: 35px;
+            font-size: 16px;
+            letter-spacing: 2px;
+            color: #8f5d14;
+        }
+
+
+        /* =========================
+           HOME PAGE
+        ========================= */
+
+        #homePage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .main-photo-wrapper {
+            width: min(90vw, 520px);
+            padding: 9px;
+            border-radius: 22px;
+
+            background: linear-gradient(
+                135deg,
+                #6d27c9,
+                #b56cff,
+                #6d27c9
+            );
+
+            box-shadow:
+                0 15px 45px rgba(100, 40, 130, 0.35),
+                0 0 25px rgba(170, 80, 255, 0.35);
+        }
+
+        .main-photo {
+            width: 100%;
+            display: block;
+            border-radius: 15px;
+            object-fit: cover;
+            background: white;
+        }
+
+
+        /* =========================
+           PASSWORD BOX
+        ========================= */
+
+        .password-section {
+            margin-top: 35px;
+            width: min(90vw, 450px);
+        }
+
+        .password-title {
+            font-family: "Cinzel", serif;
+            font-size: 23px;
+            margin-bottom: 14px;
+
+            background: linear-gradient(
+                to bottom,
+                #fff5ae,
+                #d89b24,
+                #fff0a1
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+
+            text-shadow: 0 0 10px rgba(220,160,40,0.35);
+        }
+
+        .password-input {
+            width: 100%;
+            padding: 15px 18px;
+
+            border: 2px solid #a65fe8;
+            border-radius: 15px;
+
+            outline: none;
+
+            text-align: center;
+            font-size: 19px;
+            font-family: "Playfair Display", serif;
+
+            background: rgba(255,255,255,0.75);
+            color: #6a378e;
+
+            box-shadow:
+                0 5px 20px rgba(100, 40, 130, 0.15);
+        }
+
+        .password-input:focus {
+            border-color: #7025b5;
+            box-shadow:
+                0 0 15px rgba(130, 50, 210, 0.35);
+        }
+
+        .enter-btn {
+            margin-top: 15px;
+            padding: 13px 34px;
+
+            border: none;
+            border-radius: 30px;
+
+            cursor: pointer;
+
+            font-family: "Cinzel", serif;
+            font-size: 16px;
+            font-weight: 700;
+
+            color: white;
+
+            background: linear-gradient(
+                135deg,
+                #7428c4,
+                #a653e7,
+                #7023b9
+            );
+
+            box-shadow:
+                0 7px 20px rgba(100, 30, 150, 0.3);
+
+            transition: 0.3s ease;
+        }
+
+        .enter-btn:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow:
+                0 10px 28px rgba(100, 30, 150, 0.4);
+        }
+
+        .error-message {
+            margin-top: 12px;
+            color: #a52855;
+            font-size: 14px;
+            min-height: 20px;
+        }
+
+
+        /* =========================
+           MEMORIES PAGE
+        ========================= */
+
+        #memoriesPage {
+            display: none;
+        }
+
+        .memories-title {
+            font-family: "Cinzel", serif;
+            font-size: clamp(32px, 6vw, 58px);
+            margin-bottom: 15px;
+
+            background: linear-gradient(
+                to bottom,
+                #fff7b0,
+                #d89b21,
+                #fff0a0,
+                #bd7d08
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+
+            text-shadow:
+                0 0 10px rgba(255,210,70,0.5);
+        }
+
+        .memories-subtitle {
+            color: #925f1c;
+            margin-bottom: 40px;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+
+        /* =========================
+           MEMORY GRID
+        ========================= */
+
+        .memory-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 45px 35px;
+
+            text-align: left;
+        }
+
+
+        /* =========================
+           MEMORY CARD
+        ========================= */
+
+        .memory-card {
+            position: relative;
+
+            padding: 18px;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.62),
+                    rgba(255,225,239,0.75)
+                );
+
+            border: 1px solid rgba(255,255,255,0.7);
+
+            box-shadow:
+                0 15px 35px rgba(100, 45, 100, 0.15);
+
+            backdrop-filter: blur(7px);
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 22px 45px rgba(100, 40, 130, 0.25),
+                0 0 25px rgba(200, 120, 255, 0.15);
+        }
+
+
+        /* =========================
+           PURPLE PHOTO FRAME
+        ========================= */
+
+        .memory-photo-frame {
+            position: relative;
+
+            width: 100%;
+            aspect-ratio: 1 / 1;
+
+            padding: 7px;
+
+            background: linear-gradient(
+                135deg,
+                #6824a9,
+                #a95df0,
+                #762bb7,
+                #bd78ff
+            );
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 7px 20px rgba(90, 25, 130, 0.28);
+        }
+
+        .memory-photo {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+            border-radius: 5px;
+
+            background: #fff;
+        }
+
+
+        /* =========================
+           LITTLE FLOWER
+        ========================= */
+
+        .corner-flower {
+            position: absolute;
+
+            right: -13px;
+            top: -13px;
+
+            font-size: 29px;
+
+            filter:
+                drop-shadow(0 2px 3px rgba(80,30,100,0.25));
+
+            transform: rotate(12deg);
+
+            z-index: 5;
+        }
+
+
+        /* =========================
+           MEMORY TEXT
+        ========================= */
+
+        .memory-name {
+            margin-top: 18px;
+
+            font-family: "Cinzel", serif;
+
+            font-size: 22px;
+            font-weight: 700;
+
+            background: linear-gradient(
+                to bottom,
+                #fff5ae,
+                #dfa12d,
+                #fff0a0,
+                #bb7905
+            );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+
+            text-shadow:
+                0 0 8px rgba(205, 145, 20, 0.3);
+        }
+
+        .memory-text {
+            margin-top: 9px;
+
+            font-size: 15px;
+            line-height: 1.65;
+
+            color: #82551e;
+        }
+
+        .placeholder-note {
+            opacity: 0.75;
+        }
+
+
+        /* =========================
+           BACK BUTTON
+        ========================= */
+
+        .back-btn {
+            margin-top: 55px;
+            margin-bottom: 25px;
+
+            padding: 12px 30px;
+
+            border: none;
+            border-radius: 30px;
+
+            cursor: pointer;
+
+            font-family: "Cinzel", serif;
+            font-weight: 700;
+
+            color: white;
+
+            background: linear-gradient(
+                135deg,
+                #7225bd,
+                #a956e6
+            );
+
+            box-shadow:
+                0 7px 20px rgba(100, 30, 150, 0.3);
+
+            transition: 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+        }
+
+
+        /* =========================
+           RESPONSIVE - TABLET
+        ========================= */
+
+        @media (max-width: 750px) {
+
+            .page {
+                padding: 35px 15px;
+            }
+
+            .memory-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .memory-card {
+                padding: 14px;
+            }
+
+            .main-title {
+                letter-spacing: 2px;
+            }
+
+            .memories-title {
+                letter-spacing: 1px;
+            }
+        }
+
+
+        /* =========================
+           RESPONSIVE - MOBILE
+        ========================= */
+
+        @media (max-width: 480px) {
+
+            .page {
+                padding: 28px 12px;
+            }
+
+            .main-title {
+                font-size: 38px;
+                margin-bottom: 25px;
+            }
+
+            .subtitle {
+                font-size: 13px;
+            }
+
+            .password-title {
+                font-size: 19px;
+            }
+
+            .password-input {
+                padding: 13px;
+                font-size: 17px;
+            }
+
+            .memory-card {
+                border-radius: 17px;
+            }
+
+            .memory-name {
+                font-size: 19px;
+            }
+
+            .memory-text {
+                font-size: 14px;
+            }
+
+            .float-item {
+                font-size: 19px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =====================================
+         FLOATING BACKGROUND ELEMENTS
+    ====================================== -->
+
+    <div class="background-elements">
+
+        <span class="float-item" style="left:5%; animation-duration:14s; animation-delay:0s;">♡</span>
+        <span class="float-item" style="left:12%; animation-duration:18s; animation-delay:3s;">🌷</span>
+        <span class="float-item" style="left:20%; animation-duration:13s; animation-delay:5s;">✦</span>
+        <span class="float-item" style="left:29%; animation-duration:17s; animation-delay:1s;">♡</span>
+        <span class="float-item" style="left:38%; animation-duration:15s; animation-delay:6s;">✨</span>
+        <span class="float-item" style="left:47%; animation-duration:19s; animation-delay:2s;">🌷</span>
+        <span class="float-item" style="left:56%; animation-duration:14s; animation-delay:7s;">♡</span>
+        <span class="float-item" style="left:65%; animation-duration:18s; animation-delay:4s;">✦</span>
+        <span class="float-item" style="left:74%; animation-duration:16s; animation-delay:8s;">🌷</span>
+        <span class="float-item" style="left:83%; animation-duration:20s; animation-delay:1s;">♡</span>
+        <span class="float-item" style="left:92%; animation-duration:15s; animation-delay:5s;">✨</span>
+
+    </div>
+
+
+
+    <!-- =====================================
+         HOME PAGE
+    ====================================== -->
+
+    <section class="page" id="homePage">
+
+        <div class="container">
+
+            <h1 class="main-title">
+                Memories Diary
+            </h1>
+
+            <p class="subtitle">
+                A little place for memories that deserve to stay forever ✨
+            </p>
+
+
+            <!-- Main Image -->
+
+            <div class="main-photo-wrapper">
+
+                <img
+                    src="assets/memory.jpg"
+                    alt="Main Memory"
+                    class="main-photo"
+                >
+
+            </div>
+
+
+            <!-- Password -->
+
+            <div class="password-section">
+
+                <h2 class="password-title">
+                    🔐 Enter the Secret Password
+                </h2>
+
+                <input
+                    type="password"
+                    id="passwordInput"
+                    class="password-input"
+                    placeholder="Enter password"
+                    maxlength="20"
+                    autocomplete="off"
+                >
+
+                <button
+                    class="enter-btn"
+                    onclick="checkPassword()"
+                >
+                    Unlock Memories
+                </button>
+
+                <p
+                    id="errorMessage"
+                    class="error-message"
+                ></p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         MEMORIES PAGE
+    ====================================== -->
+
+    <section class="page" id="memoriesPage">
+
+        <div class="container">
+
+            <h1 class="memories-title">
+                Our Memories ✨
+            </h1>
+
+            <p class="memories-subtitle">
+                18 moments, countless feelings & memories worth keeping.
+            </p>
+
+
+            <div class="memory-grid">
+
+
+                <!-- =====================================
+                     MEMORY 1
+                ====================================== -->
+
+                <article class="memory-card">
+
+                    <div class="memory-photo-frame">
+
+                        <img
+                            src="assets/memory1.jpg"
+                            alt="Memory 1"
+                            class="memory-photo"
+                        >
+
+                        <span class="corner-flower">
+                            🌸
+                        </span>
+
+                    </div>
+
+                    <!-- NAME PLACEHOLDER
+                         Replace "NAME HERE" with the name
+                         that निर्वी calls you.
+                    -->
+
+                    <h2 class="memory-name">
+                        Ajoba🥹
+                    </h2>
+
+                    <!-- MEMORY PLACEHOLDER
+                         Write your 2-line memory here.
+                    -->
+
+                    <p class="memory-text">
+                        
+                    </p>
+
+                </article>
+
+
+
+                <!-- MEMORY 2 -->
+
+                <article class="memory-card">
+
+                    <div class="memory-photo-frame">
+
+                        <img
+                            src="assets/memory2.jpg"
+                            alt="Memory 2"
+                            class="memory-photo"
+                        >
+
+                        <span class="corner-flower">🌼</span>
+
+                    </div>
+
+                    <h2 class="memory-name">
+                       Pappa🥹
+                    </h2>
+
+                    <p class="memory-text">
+                        Always a Fathers Fav daughter❤️🫶
+                    </p>
+
+                </article>
+
+
+
+                <!-- MEMORY 3 -->
+
+                <article class="memory-card">
+
+                    <div class="memory-photo-frame">
+
+                        <img
+                            src="assets/memory3.jpg"
+                            alt="Memory 3"
+                            class="memory-photo"
+                        >
+
+                        <span class="corner-flower">🌷</span>
+
+                    </div>
+
+                    <h2 class="memory-name">
+                        Mummy🥹
+                    </h2>
+
+                    <p class="memory-text">
+                        
+                    </p>
+
+                </article>
+
+
+
+                <!-- MEMORY 4 -->
+
+                <article class="memory-card">
+
+                    <div class="memory-photo-frame">
+
+                        <img
+                            src="assets/memory4.jpg"
+                            alt="Memory 4"
+                            class="memory-photo"
+                        >
+
+                        <span class="corner-flower">🌸</span>
+
+                    </div>
+
+                    <h2 class="memory-name">
+                        Dada🥹
+                    </h2>
+
+                    <p class="memory-text">
+                        
+                    </p>
+
+                </article>
+
+
+
+                <!-- MEMORY 5 -->
+
+                <article class="memory-card">
+
+                    <div class="memory-photo-frame">
+
+                        <img
+                            src="assets/memory5.jpg"
+                            alt="Memory 5"
+                            class="memory-photo"
+                        >
+
+                        <span class="corner-flower">🌼</span>
+
+                    </div>
+
+                    <h2 class="memory-name">
+                        Aai & Baba🥹
+                    </h2>
+
+                    <p class="memory-text">
+                        
+                    </p>
+
+                </article>
+
+
+
+                <!-- MEMORY 6 -->
+
+                <article class="memory-card">
+
+                    <div class="memory-photo-frame">
+
+                        <img
+                            src="assets/memory6.jpg"
+                            alt="Memory 6"
+                            class="memory-photo"
+                        >
+
+                        <span class="corner-flower">🌷</span>
+
+                    </div>
+
+                    <h2 class="memory-name">
+                        Varad Dada🥹
+                    </h2>
+
+                    <p class="memory-text">
+                        Being always his fav❤️🫶
+                    </p>
+
+                </article>
+
+
+
+                <!-- MEMORY 7 -->
+
+                <article class="memory-card">
+
+                    <div class="memory-photo-frame">
+
+                        <img
+                            src="assets/memory7.jpg"
+                            alt="Memory 7"
+                            class="memory-photo"
+                        >
+
+                        <span class="corner-flower">🌸</span>
+
+                    </div>
+
+                    <h2 class="memory-name">
+                       Guddi Didi🥹
+                    </h2>
+
+                    <p class="memory-text">
+                        
+                    </p>
+
+                </article>
+
+
+
+                <!-- MEMORY 8 -->
+
+                <article class="memory-card">
+
+                    <div class="memory-photo-frame">
+
+                        <img
+                            src="assets/memory8.jpg"
+                            alt="Memory 8"
+                            class="memory-photo"
+                        >
+
+                        <span class="corner-flower">🌼</span>
+
+                    </div>
+
+                    <h2 class="memory-name">
+                        Choti attu🥹
+                    </h2>
+
+                    <p class="memory-text">
+                        
+                    </p>
+
+                </article>
+
+
+
+                <!-- MEMORY 9 -->
+
+                <article class="memory-card">
+
+                    <div class="memory-photo-frame">
+
+                        <img
+                            src="assets/memory9.jpg"
+                            alt="Memory 9"
+                            class="memory-photo"
+                        >
+
+                        <span class="corner-flower">🌷</span>
+
+                    </div>
+
+                    <h2 class="memory-name">
+                        Sankalp Dada🥹
+                    </h2>
+
+                    <p class="memory-text">
+                        We look exactly the same🥹
+                         like a photo copy🫶
+                    </p>
+
+                </article>
+
+
+
+                <!-- MEMORY 10 -->
+
+                <article class="memory-card">
+
+                    <div class="memory-photo-frame">
+
+                        <img
+                            src="assets/memory10.jpg"
+                            alt="Memory 10"
+                            class="memory-photo"
+                        >
+
+                        <span class="corner-flower">🌸</span>
+
+                    </div>
+
+                    <h2 class="memory-name">
+                       MothiAattu & mama🥹
+                    </h2>
+
+                    <p class="memory-text">
+                       
+                    </p>
+
+                </article>
+
+
+
+                <!-- MEMORY 11 -->
+
+                <article class="memory-card">
+
+                    <div class="memory-photo-frame">
+
+                        <img
+                            src="assets/memory11.jpg"
+                            alt="Memory 11"
+                            class="memory-photo"
+                        >
+
+                        <span class="corner-flower">🌼</span>
+
+                    </div>
+
+                    <h2 class="memory-name">
+                        Prachi Maushi🥹
+                    </h2>
+
+                    <p class="memory-text">
+                       
+                    </p>
+
+                </article>
+
+
+
+                <!-- MEMORY 12 -->
+
+                <article class="memory-card">
+
+                    <div class="memory-photo-frame">
+
+                        <img
+                            src="assets/memory12.jpg"
+                            alt="Memory 12"
+                            class="memory-photo"
+                        >
+
+                        <span class="corner-flower">🌷</span>
+
+                    </div>
+
+                    <h2 class="memory-name">
+                        Sandesh Mama🥹
+                    </h2>
+
+                    <p class="memory-text">
+                        
+                    </p>
+
+                </article>
+
+
+
+                <!-- MEMORY 13 -->
+
+                <article class="memory-card">
+
+                    <div class="memory-photo-frame">
+
+                        <img
+                            src="assets/memory13.jpg"
+                            alt="Memory 13"
+                            class="memory-photo"
+                        >
+
+                        <span class="corner-flower">🌸</span>
+
+                    </div>
+
+                    <h2 class="memory-name">
+                        Rushi Mama🥹
+                    </h2>
+
+                    <p class="memory-text">
+                        
+                    </p>
+
+                </article>
+
+
+
+                <!-- MEMORY 14 -->
+
+                <article class="memory-card">
+
+                    <div class="memory-photo-frame">
+
+                        <img
+                            src="assets/memory14.jpg"
+                            alt="Memory 14"
+                            class="memory-photo"
+                        >
+
+                        <span class="corner-flower">🌼</span>
+
+                    </div>
+
+                    <h2 class="memory-name">
+                        Baba🥹
+                    </h2>
+
+                    <p class="memory-text">
+                        
+                    </p>
+
+                </article>
+
+
+
+                <!-- MEMORY 15 -->
+
+                <article class="memory-card">
+
+                    <div class="memory-photo-frame">
+
+                        <img
+                            src="assets/memory15.jpg"
+                            alt="Memory 15"
+                            class="memory-photo"
+                        >
+
+                        <span class="corner-flower">🌷</span>
+
+                    </div>
+
+                    <h2 class="memory-name">
+                       Chiku Didi🥹
+                    </h2>
+
+                    <p class="memory-text">
+                        
+                    </p>
+
+                </article>
+
+
+
+                <!-- MEMORY 16 -->
+
+                <article class="memory-card">
+
+                    <div class="memory-photo-frame">
+
+                        <img
+                            src="assets/memory16.jpg"
+                            alt="Memory 16"
+                            class="memory-photo"
+                        >
+
+                        <span class="corner-flower">🌸</span>
+
+                    </div>
+
+                    <h2 class="memory-name">
+                       Soti Didi🥹
+                    </h2>
+
+                    <p class="memory-text">
+                        
+                    </p>
+
+                </article>
+
+
+
+                <!-- MEMORY 17 -->
+
+                <article class="memory-card">
+
+                    <div class="memory-photo-frame">
+
+                        <img
+                            src="assets/memory17.jpg"
+                            alt="Memory 17"
+                            class="memory-photo"
+                        >
+
+                        <span class="corner-flower">🌼</span>
+
+                    </div>
+
+                    <h2 class="memory-name">
+                       Raju Kaka🥹
+                    </h2>
+
+                    <p class="memory-text">
+                        
+                    </p>
+
+                </article>
+
+
+
+                <!-- MEMORY 18 -->
+
+                <article class="memory-card">
+
+                    <div class="memory-photo-frame">
+
+                        <img
+                            src="assets/memory18.jpg"
+                            alt="Memory 18"
+                            class="memory-photo"
+                        >
+
+                        <span class="corner-flower">🌷</span>
+
+                    </div>
+
+                    <h2 class="memory-name">
+                        renu🥹
+                    </h2>
+
+                    <p class="memory-text">
+                        
+                    </p>
+
+                </article>
+
+
+            </div>
+
+
+            <!-- BACK BUTTON -->
+
+            <button
+                class="back-btn"
+                onclick="goBack()"
+            >
+                ← Back to Diary
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         JAVASCRIPT
+    ====================================== -->
+
+    <script>
+
+        /* =========================
+           PASSWORD
+        ========================= */
+
+        const correctPassword = "122021";
+
+
+        function checkPassword() {
+
+            const input =
+                document.getElementById("passwordInput");
+
+            const error =
+                document.getElementById("errorMessage");
+
+            const homePage =
+                document.getElementById("homePage");
+
+            const memoriesPage =
+                document.getElementById("memoriesPage");
+
+
+            if (input.value === correctPassword) {
+
+                error.textContent = "";
+
+                homePage.style.display = "none";
+
+                memoriesPage.style.display = "flex";
+
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+
+            }
+
+            else {
+
+                error.textContent =
+                    "Incorrect password. Try again ✨";
+
+                input.value = "";
+
+                input.focus();
+
+            }
+
+        }
+
+
+
+        /* =========================
+           ENTER KEY
+        ========================= */
+
+        document
+            .getElementById("passwordInput")
+            .addEventListener("keydown", function(event) {
+
+                if (event.key === "Enter") {
+
+                    checkPassword();
+
+                }
+
+            });
+
+
+
+        /* =========================
+           BACK BUTTON
+        ========================= */
+
+        function goBack() {
+
+            const homePage =
+                document.getElementById("homePage");
+
+            const memoriesPage =
+                document.getElementById("memoriesPage");
+
+            memoriesPage.style.display = "none";
+
+            homePage.style.display = "flex";
+
+            document.getElementById("passwordInput").value = "";
+
+            document.getElementById("errorMessage").textContent = "";
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,925 @@
+/* =========================================
+   MEMORIES DIARY - COMPLETE STYLE.CSS
+   ========================================= */
+
+/* ---------- RESET ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Georgia", "Times New Roman", serif;
+    background:
+        radial-gradient(circle at top, #ffeaf4 0%, #ffd8e9 45%, #ffc9df 100%);
+    color: #7a1748;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   FLOATING BACKGROUND
+   ========================================= */
+
+.background-elements {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.float-item {
+    position: absolute;
+    bottom: -50px;
+    opacity: 0.65;
+    animation: floatUp linear infinite;
+    user-select: none;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: translateY(-50vh) rotate(180deg);
+    }
+
+    100% {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
+/* =========================================
+   PAGE
+   ========================================= */
+
+.page {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    min-height: 100vh;
+
+    display: none;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    text-align: center;
+
+    padding: 45px 20px 60px;
+}
+
+.page.active {
+    display: flex;
+}
+
+
+/* =========================================
+   CONTAINER
+   ========================================= */
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   HOME PAGE
+   ========================================= */
+
+#homePage {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   MAIN TITLE
+   ========================================= */
+
+.main-title {
+    width: 100%;
+
+    margin: 10px auto 8px;
+
+    text-align: center;
+
+    font-size: clamp(38px, 6vw, 72px);
+    font-weight: 700;
+    letter-spacing: 2px;
+
+    color: #c99625;
+
+    background: linear-gradient(
+        90deg,
+        #9c6a08,
+        #f8d66d,
+        #b8860b,
+        #ffe79a,
+        #9c6a08
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    background-clip: text;
+
+    text-shadow:
+        0 2px 3px rgba(120, 70, 0, 0.2);
+}
+
+
+/* =========================================
+   SUBTITLE
+   ========================================= */
+
+.subtitle {
+    width: 100%;
+
+    text-align: center;
+
+    margin: 0 auto 30px;
+
+    font-size: 18px;
+    color: #9a4269;
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   MAIN PHOTO
+   ========================================= */
+
+.main-photo-wrapper {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 30px;
+
+    text-align: center;
+}
+
+
+/* MAIN IMAGE */
+
+.main-photo {
+    display: block;
+
+    width: min(430px, 88vw);
+    height: auto;
+
+    max-height: 500px;
+
+    object-fit: cover;
+
+    margin: 0 auto;
+
+    border: 8px solid #7541a8;
+    border-radius: 18px;
+
+    box-shadow:
+        0 10px 25px rgba(91, 42, 121, 0.25),
+        0 0 0 4px rgba(255, 255, 255, 0.5);
+
+    transition: transform 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.main-photo:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 30px rgba(91, 42, 121, 0.3),
+        0 0 0 5px rgba(255, 255, 255, 0.6);
+}
+
+
+/* =========================================
+   PASSWORD SECTION
+   ========================================= */
+
+.password-section {
+    width: 100%;
+    max-width: 500px;
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+/* PASSWORD TITLE */
+
+.password-title {
+    width: 100%;
+
+    margin-bottom: 15px;
+
+    text-align: center;
+
+    font-size: 24px;
+    font-weight: 700;
+
+    color: #a47718;
+
+    background: linear-gradient(
+        90deg,
+        #8d6108,
+        #eac653,
+        #9c6c0d,
+        #f4d875,
+        #8d6108
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    background-clip: text;
+}
+
+
+/* PASSWORD INPUT */
+
+.password-input {
+    display: block;
+
+    width: min(350px, 85vw);
+    height: 52px;
+
+    margin: 0 auto 15px;
+
+    padding: 0 18px;
+
+    text-align: center;
+
+    font-family: Georgia, serif;
+    font-size: 18px;
+
+    color: #76264d;
+
+    background: rgba(255, 255, 255, 0.8);
+
+    border: 2px solid #9b61bd;
+    border-radius: 14px;
+
+    outline: none;
+
+    box-shadow:
+        0 5px 15px rgba(112, 57, 126, 0.12);
+
+    transition: 0.25s ease;
+}
+
+.password-input:focus {
+    border-color: #7541a8;
+
+    box-shadow:
+        0 0 0 4px rgba(117, 65, 168, 0.12);
+}
+
+.password-input::placeholder {
+    color: #b17a97;
+}
+
+
+/* =========================================
+   ENTER / CONFIRM BUTTON
+   ========================================= */
+
+.enter-btn {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 220px;
+    min-height: 50px;
+
+    margin: 0 auto;
+
+    padding: 12px 25px;
+
+    border: none;
+    border-radius: 25px;
+
+    cursor: pointer;
+
+    text-align: center;
+
+    font-family: Georgia, serif;
+    font-size: 17px;
+    font-weight: 700;
+
+    color: white;
+
+    background: linear-gradient(
+        135deg,
+        #8b2454,
+        #b33d70,
+        #8b2454
+    );
+
+    box-shadow:
+        0 7px 18px rgba(119, 34, 74, 0.25);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.enter-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 22px rgba(119, 34, 74, 0.35);
+}
+
+.enter-btn:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   ERROR MESSAGE
+   ========================================= */
+
+.error-message {
+    width: 100%;
+
+    min-height: 25px;
+
+    margin-top: 12px;
+
+    text-align: center;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    color: #a51f4f;
+}
+
+
+/* =========================================
+   PASSWORD SHAKE
+   ========================================= */
+
+.shake {
+    animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-7px);
+    }
+
+    50% {
+        transform: translateX(7px);
+    }
+
+    75% {
+        transform: translateX(-7px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+
+/* =========================================
+   MEMORIES PAGE
+   ========================================= */
+
+#memoriesPage {
+    width: 100%;
+    min-height: 100vh;
+
+    display: none;
+
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+#memoriesPage.active {
+    display: flex;
+}
+
+
+/* =========================================
+   MEMORIES TITLE
+   ========================================= */
+
+.memories-title {
+    width: 100%;
+
+    margin: 10px auto 8px;
+
+    text-align: center;
+
+    font-size: clamp(34px, 5vw, 58px);
+
+    color: #bd8b1e;
+
+    background: linear-gradient(
+        90deg,
+        #8d6108,
+        #f7d66c,
+        #a9780d,
+        #ffe99b,
+        #8d6108
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    background-clip: text;
+}
+
+.memories-subtitle {
+    width: 100%;
+
+    margin: 0 auto 35px;
+
+    text-align: center;
+
+    font-size: 17px;
+    color: #93486a;
+}
+
+
+/* =========================================
+   MEMORY GRID
+   ========================================= */
+
+.memory-grid {
+    width: 100%;
+    max-width: 950px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 30px;
+
+    justify-content: center;
+    align-items: start;
+}
+
+
+/* =========================================
+   MEMORY CARD
+   ========================================= */
+
+.memory-card {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 20px;
+
+    background: rgba(255, 240, 247, 0.75);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 25px rgba(117, 65, 168, 0.12);
+
+    border: 1px solid rgba(255, 255, 255, 0.7);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.memory-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 14px 30px rgba(117, 65, 168, 0.2);
+}
+
+
+/* =========================================
+   MEMORY PHOTO FRAME
+   ========================================= */
+
+.memory-photo-frame {
+    position: relative;
+
+    width: 100%;
+    max-width: 350px;
+
+    aspect-ratio: 1 / 1;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 6px solid #7541a8;
+
+    border-radius: 5px;
+
+    overflow: visible;
+
+    background: #fff;
+
+    box-shadow:
+        0 7px 18px rgba(91, 42, 121, 0.2);
+}
+
+
+/* MEMORY IMAGE */
+
+.memory-photo {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================
+   CORNER FLOWER
+   ========================================= */
+
+.corner-flower {
+    position: absolute;
+
+    right: -13px;
+    bottom: -13px;
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+
+    z-index: 5;
+}
+
+
+/* =========================================
+   MEMORY NAME
+   ========================================= */
+
+.memory-name {
+    width: 100%;
+
+    margin: 5px auto 8px;
+
+    text-align: center;
+
+    font-size: 23px;
+    font-weight: 700;
+
+    color: #b27b12;
+
+    background: linear-gradient(
+        90deg,
+        #8c6108,
+        #f4d56a,
+        #a8780c,
+        #f8df82,
+        #8c6108
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    background-clip: text;
+}
+
+
+/* =========================================
+   MEMORY TEXT
+   ========================================= */
+
+.memory-text {
+    width: 100%;
+    max-width: 500px;
+
+    margin: 0 auto;
+
+    text-align: center;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    color: #81415f;
+}
+
+
+/* =========================================
+   BACK BUTTON
+   ========================================= */
+
+.back-btn {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin: 40px auto 0;
+
+    min-width: 150px;
+    min-height: 48px;
+
+    padding: 12px 24px;
+
+    border: none;
+    border-radius: 25px;
+
+    cursor: pointer;
+
+    font-family: Georgia, serif;
+    font-size: 16px;
+    font-weight: 700;
+
+    color: white;
+
+    background: linear-gradient(
+        135deg,
+        #8b2454,
+        #b33d70,
+        #8b2454
+    );
+
+    box-shadow:
+        0 7px 18px rgba(119, 34, 74, 0.25);
+
+    transition: 0.25s ease;
+}
+
+.back-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 22px rgba(119, 34, 74, 0.35);
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 750px) {
+
+    .page {
+        padding: 35px 15px 50px;
+    }
+
+    .main-title {
+        font-size: 42px;
+    }
+
+    .main-photo {
+        width: min(400px, 88vw);
+    }
+
+    .memory-grid {
+        grid-template-columns: 1fr;
+
+        width: min(500px, 100%);
+
+        gap: 25px;
+    }
+
+    .memory-card {
+        width: 100%;
+    }
+
+    .memory-photo-frame {
+        max-width: 350px;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 480px) {
+
+    .page {
+        padding: 25px 12px 40px;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .main-title {
+        font-size: 34px;
+        letter-spacing: 1px;
+
+        margin-bottom: 8px;
+    }
+
+    .subtitle {
+        font-size: 15px;
+
+        margin-bottom: 22px;
+    }
+
+    /* PERFECT CENTER PHOTO */
+
+    .main-photo-wrapper {
+        width: 100%;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .main-photo {
+        width: 86vw;
+        max-width: 360px;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        border-width: 6px;
+    }
+
+    /* PASSWORD PERFECT CENTER */
+
+    .password-section {
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .password-title {
+        font-size: 21px;
+
+        text-align: center;
+    }
+
+    .password-input {
+        width: 85vw;
+        max-width: 330px;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .enter-btn {
+        width: 200px;
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .error-message {
+        text-align: center;
+    }
+
+    /* MEMORIES */
+
+    .memories-title {
+        font-size: 32px;
+    }
+
+    .memories-subtitle {
+        font-size: 15px;
+
+        margin-bottom: 25px;
+    }
+
+    .memory-grid {
+        width: 100%;
+
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .memory-card {
+        width: 100%;
+
+        padding: 15px;
+    }
+
+    .memory-photo-frame {
+        width: min(82vw, 330px);
+
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .memory-name {
+        font-size: 21px;
+    }
+
+    .memory-text {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .back-btn {
+        margin-top: 30px;
+    }
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+   ========================================= */
+
+@media (max-width: 350px) {
+
+    .main-title {
+        font-size: 29px;
+    }
+
+    .main-photo {
+        width: 84vw;
+    }
+
+    .password-input {
+        width: 88vw;
+    }
+
+    .enter-btn {
+        width: 185px;
+    }
+
+    .memory-photo-frame {
+        width: 82vw;
+    }
+}
